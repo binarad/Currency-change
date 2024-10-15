@@ -23,10 +23,12 @@ interface CODE_TYPE {
 
 function App() {
 	const [chosenCurrency, setChosenCurrency] = useState('')
-	// const default_currency = 'USD'
+	const default_currency = 'USD'
 	const codes_URL =
 		'https://v6.exchangerate-api.com/v6/46f2eb700f8b190f570e9f79/codes'
-	const currency_URL = `https://v6.exchangerate-api.com/v6/46f2eb700f8b190f570e9f79/latest/${chosenCurrency}`
+	const currency_URL = `https://v6.exchangerate-api.com/v6/46f2eb700f8b190f570e9f79/latest/${
+		chosenCurrency || default_currency
+	}`
 	const data: URL_TYPE | null = useFetch<URL_TYPE | null>(currency_URL)
 	const codes_data: CODE_TYPE | null = useFetch<CODE_TYPE | null>(codes_URL)
 	const supportedCodes = codes_data?.supported_codes
@@ -55,12 +57,11 @@ function App() {
 					className='bg-slate-400 border border-black'
 					onChange={e => {
 						e.preventDefault()
-						setChosenCurrency(e.target.value)
-						console.log(data)
-						console.log(conversionRates)
+						let current_value = e.target.value
+						setChosenCurrency(current_value)
+						console.log(codes_data)
 					}}
 				>
-					<option value='Null'> - </option>
 					{choseYourCurrency}
 				</select>
 				<div className='flex flex-col items-center justify-center'>
