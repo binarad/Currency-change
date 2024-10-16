@@ -90,7 +90,9 @@ function App() {
 					</select>
 				</div>
 			</form>
-			<div>{parseFloat(inputVal) * currentConversionRate! || ' '}</div>
+			<div>
+				{(parseFloat(inputVal) * currentConversionRate!).toFixed(2) || '...'}
+			</div>
 		</div>
 	)
 }
