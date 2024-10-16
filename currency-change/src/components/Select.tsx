@@ -1,9 +1,5 @@
-type SelectProps = {
-	selectVal: string
-	setCurrency: (value: React.SetStateAction<string>) => void
-	options: JSX.Element[] | undefined
-	name?: string
-}
+import { SelectProps } from './data'
+
 export default function SelectCurrency(props: SelectProps) {
 	const { selectVal, setCurrency, options, name } = props
 	return (

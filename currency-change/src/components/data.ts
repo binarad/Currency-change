@@ -18,3 +18,31 @@ export interface CODE_TYPE {
 	term_of_use: string
 	supported_codes: SupportedCode[]
 }
+
+export type SelectProps = {
+	selectVal: string
+	setCurrency: (selectVal: React.SetStateAction<string>) => void
+	options: JSX.Element[] | undefined
+	name?: string
+}
+
+export type InputProps = {
+	inputValue: string
+	setInputVal: (inputValue: string) => void
+}
+
+export type FormProps = {
+	inputVal: string
+	setInputVal: (inputVal: string) => void
+	chosenCurrency: string
+	setChosenCurrency: (chosenCurr: React.SetStateAction<string>) => void
+	currencyToConvert: string
+	setCurrencyToConvert: (
+		currencyToConvert: React.SetStateAction<string>
+	) => void
+}
+
+export type ResultProps = {
+	inputVal: string
+	currentConversionRate: number | undefined
+}
